@@ -1,0 +1,14 @@
+# personal
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+
+# user
+.vscode/sftp.json
+.vscode/ftp-sync.json
+
+# team (keep)
+!.vscode/
+!.vscode/extensions.json
+!.vscode/settings.shared.json
+!.vscode/launch.shared.json
