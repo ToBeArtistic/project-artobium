@@ -1,0 +1,39 @@
+
+# https://docs.docker.com/go/compose-spec-reference/
+
+# https://github.com/docker/awesome-compose
+
+#Webserver
+services:
+  server:
+    build:
+      context: .
+      target: final
+    ports:
+      - 8080:8080
+#DB
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: postgres:18
+    container_name: postgres_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret #This is an example project, so the password is intentionally kept here
+      POSTGRES_DB: db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql/docker
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+

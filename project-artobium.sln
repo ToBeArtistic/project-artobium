@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "artobium", "artobium\artobium.csproj", "{95EAC1C3-4F74-660B-DB61-7EFB2420A51B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95EAC1C3-4F74-660B-DB61-7EFB2420A51B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95EAC1C3-4F74-660B-DB61-7EFB2420A51B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95EAC1C3-4F74-660B-DB61-7EFB2420A51B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95EAC1C3-4F74-660B-DB61-7EFB2420A51B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3E3938B0-61C3-4480-B8F8-09EF385F156E}
+	EndGlobalSection
+EndGlobal
