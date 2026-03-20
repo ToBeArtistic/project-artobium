@@ -1,3 +1,3 @@
 # project-artobium
 
-A small personal site project
+A small personal site project.
