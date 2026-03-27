@@ -18,12 +18,28 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Projects\Docker\project-artobium\artobium
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Projects/Docker/project-artobium/artobium/Pages/ArtAndDesign.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXJ0QW5kRGVzaWduLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Docker/project-artobium/artobium/Pages/Development.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV2ZWxvcG1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projects/Docker/project-artobium/artobium/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/Docker/project-artobium/artobium/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Docker/project-artobium/artobium/Pages/Info.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5mby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Docker/project-artobium/artobium/Pages/More.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9yZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projects/Docker/project-artobium/artobium/Pages/Privacy.cshtml]
