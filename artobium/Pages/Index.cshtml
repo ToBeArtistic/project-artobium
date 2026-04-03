@@ -1,81 +1,46 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Tobias - Dev & Artist";
 }
 
-<!--name and subtitle box-->
-<div class="m-4" style="grid-column: 5 / 11; grid-row: 2 / 3">
-    <h1 class="text-uppercase pl-3">Tobias A. Højsgaard</h1>
-    <hr class="color-highlight" />
-    <h4 class="pl-3">software engineer // artist</h4>
-</div>
-<div class="png-overlay-highlight ms-5" style="grid-column: 8 / span 2; grid-row: 2 / 3;z-index:1;">
-    <img src="~/images/logo.png" class="img-fluid" />
-</div>
 
-<a asp-area="" asp-page="/Development" class="font-code glass-theme glass-fill rounded border-5 m-5 mt-3 png-overlay-secondary"
-        style="grid-column: 2 / span 2; grid-row: 2 / span 5;">
-    <img src="~/images/dev-tree.png" class="img-fluid img-fill-gridbox" style="position:absolute; z-index:-1;"/>
-    <div class="position-absolute top-0 start-0 mt-1 p-1 px-4"><h5>: software development</h5></div>
-</a>
-<a asp-area="" asp-page="/ArtAndDesign" class="font-serif glass-theme glass-fill rounded border-5 m-5 png-overlay-secondary"
-        style="grid-column: 3 / span 2; grid-row: 5 / span 5;">
-    <img src="~/images/design-thing.png" class="img-fluid img-fill-gridbox" style="position: absolute; z-index:-1;"/>
-        <div class="position-absolute end-0 bottom-0 mb-1 p-1 px-4"><h5>~ art & design ~</h5></div>
-</a>
-<a asp-area="" asp-page="/More" class="font-bold d-flex justify-content-center align-items-center glass-theme glass-fill rounded-circle border-5 mt-4 mb-3 mx-auto png-overlay-secondary"
-        style="grid-column: 2 / span 2; grid-row: 8 / span 4;">
-        <img src="~/images/plAnt.png" class="" style="object-fit: contain; width:auto; height:100%; display:block; pointer-events:none; z-index:-1;" />
-        <div class="position-absolute p-1 px-3 "><h5>and more!</h5></div>
-</a>
-<a asp-area="" asp-page="/Info" class="font-fun d-flex justify-content-center align-items-center glass-theme glass-fill rounded border-5 mb-2 ms-0 mt-5 me-5 png-overlay-secondary"
-        style="grid-column: 4 / span 1; grid-row: 2 / span 3;">
-        <img src="~/images/portrait.png" class="img-fluid img-fill-gridbox" />
-        <div class="position-absolute start-0 bottom-0 mb-1 ms-1 p-1 px-3"><h5>about me</h5></div>
-</a>
+<div class="overflow-scroll" style="grid-column: 1/span 10;grid-row: 1/span 12;">
+    <div class="d-flex flex-row flex-grow-1 dither h-100">
+        <section class="index-grid p-0 m-0 w-100 h-100">
 
-<!--about me - textbox-->
-<div class="p-5" style="grid-column: 5 / 10; grid-row: 4 / 8;">
-    <span class="text-large text-shadow">Hello, I am a <span class="color-highlight">full-stack developer</span> with a <span
-        class="color-highlight">creative</span> spark. I seek to bring novel experiences to life.</span>
+        </section>
     </div>
-    <!--little hatch-->
-    <!--
-    <div class="hatch-subtle" style="grid-column: 10 / span 2; grid-row: 4 / 8;">
-    </div>-->
+    <div class="d-flex flex-row flex-grow-1 background-fill h-100">
+        <section class="index-grid p-0 m-0 w-100 h-100">
+                    About me
+        - Creating new experiences and integrating ideas
+        - Gathering knowledge to become an excellent generalist
+        </section>
+    </div>
+    <div class="d-flex flex-row flex-grow-1 dither h-100">
+        <section class="index-grid p-0 m-0 w-100 h-100">
+        Dev experience
+        - General words about me as dev
+        - Table view of places of work + education
+        - Project antinomia
+        </section>
+    </div>
+    <div class="d-flex flex-row flex-grow-1 background-fill h-100">
+        <section class="ten-by-ten-grid p-0 m-0 w-100 h-100">
+                    Art, design & more
+        - pencil and paper
+        - digital design
+        Storytelling
+        - writing and worldbuilding
+        Music
+        - link to music
+        </section>
+    </div>
+    <div class="d-flex flex-row flex-grow-1 dither h-25">
+        <section class="index-grid p-0 m-0 w-100 h-100">
 
-
-
-@*
-@if (!Model.Products.Any())
-{
-    <p>No products found.</p>
-}
-else
-{
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Stock</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var p in Model.Products)
-            {
-                <tr>
-                    <td>@p.Name</td>
-                    <td>@p.Description</td>
-                    <td>@p.Price.ToString("C")</td>
-                    <td>@p.Stock</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-*@
-
+        </section>
+    </div>
+</div>
 
