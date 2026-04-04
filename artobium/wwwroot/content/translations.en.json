@@ -1,0 +1,12 @@
+{
+  "HeroTitle": "Tobias A. Højsgaard",
+  "HeroSubtitle": "Developer // Artist",
+  "HeroParagraph": "Looking to create novel experiences.",
+  "AboutMeParagraph": "This is a long text that also includes stuff like <span class=\"color-highlight\">highlights</span> for emphasis.",
+  "AboutTitle": "About Me",
+  "NavHome": "Home",
+  "NavAbout": "About",
+  "Work-Antinomia-Header": "Project Antinomia",
+  "Work-Antinomia-Subtitle": "A personal project",
+  "Work-Antinomia-Teaser": "Project Antinomia is a collection of programming, art, writing and music."
+}

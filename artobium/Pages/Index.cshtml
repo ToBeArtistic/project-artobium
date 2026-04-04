@@ -1,45 +1,167 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Tobias - Dev & Artist";
+    ViewData["Title"] = "Tobias - Developer // Artist";
 }
+@inject IndexModel.Localizer Loc
 
+<div class="d-flex flex-column" style="height:100vh; overflow:hidden;">
 
-<div class="overflow-scroll" style="grid-column: 1/span 10;grid-row: 1/span 12;">
-    <div class="d-flex flex-row flex-grow-1 dither h-100">
-        <section class="index-grid p-0 m-0 w-100 h-100">
+    <!-- Top navbar -->
+    <nav class="rounded position-absolute bottom-0 start-50 translate-middle-x mb-5"
+         style="z-index: 500; width:100%; max-width: 40rem;">
+        <div class="container-fluid">
+            <div class="row d-flex flex-grow-1">
+                <div class="col d-flex justify-content-center">
+                    <a href="#section-home">
+                        <button class="btn rounded-circle glass-theme glass-fill"
+                                style="height:6rem; width:6rem;">home</button>
+                    </a>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <a href="#section-about">
+                        <button class="btn rounded-circle glass-theme glass-fill"
+                                style="height:6rem; width:6rem;">about</button>
+                    </a>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <a href="#section-work">
+                        <button class="btn rounded-circle glass-theme glass-fill"
+                                style="height:6rem; width:6rem;">work</button>
+                    </a>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <a href="#section-contact">
+                        <button class="btn rounded-circle glass-theme glass-fill"
+                                style="height:6rem; width:6rem;">contact</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-        </section>
-    </div>
-    <div class="d-flex flex-row flex-grow-1 background-fill h-100">
-        <section class="index-grid p-0 m-0 w-100 h-100">
-                    About me
-        - Creating new experiences and integrating ideas
-        - Gathering knowledge to become an excellent generalist
-        </section>
-    </div>
-    <div class="d-flex flex-row flex-grow-1 dither h-100">
-        <section class="index-grid p-0 m-0 w-100 h-100">
-        Dev experience
-        - General words about me as dev
-        - Table view of places of work + education
-        - Project antinomia
-        </section>
-    </div>
-    <div class="d-flex flex-row flex-grow-1 background-fill h-100">
-        <section class="ten-by-ten-grid p-0 m-0 w-100 h-100">
-                    Art, design & more
-        - pencil and paper
-        - digital design
-        Storytelling
-        - writing and worldbuilding
-        Music
-        - link to music
-        </section>
-    </div>
-    <div class="d-flex flex-row flex-grow-1 dither h-25">
-        <section class="index-grid p-0 m-0 w-100 h-100">
+    <div class="d-flex flex-shrink-1 flex-grow-1 flex-column p-0" style="min-height: 0; overflow-y: auto;">
+        <section class="index-grid p-0 m-0">
+            <div class="d-flex justify-content-end png-overlay-secondary position-absolute start-0 top-0"
+                 style="width: 200vh; height: 100vh; object-fit: contain; opacity: 0.2; z-index: -100;">
+                <img src="~/images/bubbles-back.png" class="img-fluid" />
+            </div>
+            <div class="d-flex justify-content-end png-overlay-highlight position-absolute start-0 top-0"
+                 style="width: 200vh; height: 100vh; object-fit: contain; opacity: 0.2; z-index: -100;">
+                <img src="~/images/bubbles-front.png" class="img-fluid" />
+            </div>
+            <div class="overflow-scroll" style="grid-column: 1 / span 10; grid-row: 1 / span 12;">
+                
+                <div class="d-flex flex-row flex-column flex-grow-1 dither" style="min-height: 100%;">
+                    <section id="section-home" class="grid-responsive p-0 m-0">
+                        <div class="g-1-name">
+                            <h1>@Loc["HeroTitle"]</h1>
+                            <hr />
+                            <p>@Loc["HeroSubtitle"]</p>
+                        </div>
+                        <div class="g-1-intro-text">
+                            <div class="p-5 d-flex flex-column flex-row">
+                                <span class="text-large">
+                                    @Loc["HeroParagraph"]
+                                </span>
+                            </div>
+                        </div>
 
+                    </section>
+                </div>
+
+                <div class="d-flex flex-row flex-column flex-grow-1 background-fill" style="min-height: 100%;">
+                    <section id="section-about" class="grid-responsive p-0 m-0">
+                        <div class="g-2-portrait d-flex justify-content-center align-items-center">
+                            <div class="position-relative m-5" style="width: 18rem; height:18rem;">
+                                <div class="position-absolute secondary-fill top-0 start-0"
+                                     style="height: 2rem; width: 2rem;"></div>
+                                <div class="rounded-circle w-100 h-100 position-relative" style="overflow: hidden;">
+                                    <img src="~/images/tobias-grayscale.png" class="position-absolute"
+                                         style="width: auto; height:100%; left: -1rem;" />
+                                </div>
+                                <div class="position-absolute secondary-fill end-0 bottom-0"
+                                     style="height: 2rem; width: 2rem;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="g-2-text d-flex justify-content-center">
+                            <div class="d-flex flex-column justify-content-center text-center"
+                                 style="width: 40rem; max-width:90%;">
+                                <span class="text-md">
+                                    @Loc["AboutMeParagraph"]
+                                </span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                @*About me
+                - Creating new experiences and integrating ideas
+                - Gathering knowledge to become an excellent generalist*@
+                <div class="d-flex flex-row flex-grow-1 secondary-g-fill">
+                    <section id="section-work" class="grid-responsive p-0 m-0">
+                        <div class="container-fluid g-3-workitems responsive-grid">
+                            <div class="row">
+                                @{
+                                    foreach(IndexModel.WorkItem workItem in Model.workItems){
+                                        <div class="col d-flex justify-content-center">
+                                            <div class="work-item rounded glass-theme glass-fill">
+                                                <h1>@Loc[workItem.header]</h1>
+                                                <span>@Loc[workItem.teaser]</span>
+                                                <span>@Loc[workItem.fulltext]</span>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                @*
+                Dev experience
+                - General words about me as dev
+                - Table view of places of work + education
+                - Project antinomia
+                <div class="d-flex flex-row flex-grow-1 background-fill h-100">
+                    <section class="ten-by-ten-grid p-0 m-0 w-100 h-100">
+                    </section>
+
+                </div>
+                Art, design & more
+                - pencil and paper
+                - digital design
+                Storytelling
+                - writing and worldbuilding
+                Music
+                - link to music                *@
+                <div class="d-flex flex-row flex-grow-1 dither h-25">
+                    <section id="section-contact" class="index-grid p-0 m-0 w-100 h-100">
+
+                    </section>
+                </div>
+            </div>
+
+            @*
+                <!--email img-->
+                <div class="png-overlay-primary ms-2" style="grid-column: 9 / 10; grid-row: 10/11; z-index:2;">
+                    <img src="~/images/letter.png" class="img-fluid" style="height:100%;" />
+                </div>
+                <!--email text-->
+                <div class="d-flex ms-5 pt-2 pb-2 align-items-center justify-content-end"
+                     style="grid-column: 6 / 9; grid-row: 10/11; z-index:2;">
+                    <span class="align-middle">hoejsgaard.tobias@gmail.com</span>
+                </div>
+                <!--phone img-->
+                <div class="png-overlay-primary ms-2" style="grid-column: 9 / 10; grid-row: 11/12; z-index:2;">
+                    <img src="~/images/phone.png" class="img-fluid" style="height:100%;" />
+                </div>
+                <!--phone text-->
+                <div class="d-flex ms-5 pt-2 pb-2 align-items-center justify-content-end"
+                     style="grid-column: 6 / 9; grid-row: 11/12; z-index:2;">
+                    <span class="align-middle">+45 29 26 84 13</span>
+                </div>
+                *@
         </section>
     </div>
 </div>

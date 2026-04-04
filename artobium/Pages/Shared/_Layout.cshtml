@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,75 +9,10 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/artobium.styles.css" asp-append-version="true" />
 </head>
+
 <body>
 
-    <div class="d-flex flex-column" style="height:100vh; overflow:hidden;">
-
-        <!-- Top navbar -->
-        <nav class="d-flex flex-row justify-content-end navbar navbar-expand-lg pe-5 position-absolute top-0 start-0" style="z-index: 500;">
-            <ul class="nav nav-pills">
-                <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-page="/Index">
-                        <button class="btn glass-theme glass-fill">home</button>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-page="/Info">
-                        <button class="btn glass-theme glass-fill">about me</button>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-page="/Development">
-                        <button class="btn glass-theme glass-fill">development</button>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-page="/ArtAndDesign">
-                        <button class="btn glass-theme glass-fill">art & design</button>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-area="" asp-page="/More">
-                        <button class="btn glass-theme glass-fill">more</button>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
-        <div class="d-flex flex-shrink-1 flex-grow-1 flex-column p-0" style="min-height: 0; overflow-y: auto;">
-            <section class="index-grid p-0 m-0">
-                <div class="d-flex justify-content-end png-overlay-secondary position-absolute start-0 top-0"
-                     style="width: 200vh; height: 100vh; object-fit: contain; opacity: 0.2; z-index: -100;">
-                    <img src="~/images/bubbles-back.png" class="img-fluid" />
-                </div>
-                <div class="d-flex justify-content-end png-overlay-highlight position-absolute start-0 top-0"
-                     style="width: 200vh; height: 100vh; object-fit: contain; opacity: 0.2; z-index: -100;">
-                    <img src="~/images/bubbles-front.png" class="img-fluid" />
-                </div>
-
-                @RenderBody()
-                <!--email img-->
-                <div class="png-overlay-primary ms-2" style="grid-column: 9 / 10; grid-row: 10/11; z-index:2;">
-                    <img src="~/images/letter.png" class="img-fluid" style="height:100%;" />
-                </div>
-                <!--email text-->
-                <div class="d-flex ms-5 pt-2 pb-2 align-items-center justify-content-end"
-                     style="grid-column: 6 / 9; grid-row: 10/11; z-index:2;">
-                    <span class="align-middle">hoejsgaard.tobias@gmail.com</span>
-                </div>
-                <!--phone img-->
-                <div class="png-overlay-primary ms-2" style="grid-column: 9 / 10; grid-row: 11/12; z-index:2;">
-                    <img src="~/images/phone.png" class="img-fluid" style="height:100%;" />
-                </div>
-                <!--phone text-->
-                <div class="d-flex ms-5 pt-2 pb-2 align-items-center justify-content-end"
-                     style="grid-column: 6 / 9; grid-row: 11/12; z-index:2;">
-                    <span class="align-middle">+45 29 26 84 13</span>
-                </div>
-            </section>
-        </div>
-    </div>
-
+    @RenderBody()
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -90,9 +26,19 @@
                 }, { passive: false });
             });
     </script>
+    <script>
+            window.addEventListener('scroll', function () {
+                const scrollY = window.scrollY;
+                document.querySelectorAll('.parallax').forEach(el => {
+                    const speed = el.dataset.speed || 0.5;
+                    el.style.transform = `translateY(${scrollY * speed}px)`;
+                });
+            });
+    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
 
 @*
