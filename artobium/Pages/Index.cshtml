@@ -5,9 +5,38 @@
 }
 @inject IndexModel.Localizer Loc
 
-<div class="d-flex flex-column" style="height:100vh; overflow:hidden;">
+<div id="overlay" class="" style="display:none; position:fixed; inset:0; z-index:1000;">
+    <div id="overlay-content" class="overlay-1 position-absolute top-50 start-50 translate-middle">
+        <!-- partial loads here -->
+    </div>
+</div>
 
-    <!-- Top navbar -->
+<script>
+    async function openOverlay(handler, data = {}) {
+        const params = new URLSearchParams({ handler, ...data });
+        const response = await fetch(`?${params}`);
+        document.getElementById('overlay-content').innerHTML = await response.text();
+        const overlay = document.getElementById('overlay');
+        overlay.style.display = 'block';
+        requestAnimationFrame(() => overlay.classList.add('visible'));
+    }
+
+    function closeOverlay() {
+        const overlay = document.getElementById('overlay');
+        overlay.classList.remove('visible');
+        setTimeout(() => {
+            overlay.style.display = 'none';
+            document.getElementById('overlay-content').innerHTML = '';
+        }, 300); // match transition duration
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeOverlay();
+    });
+</script>
+
+<div class="d-flex flex-column" style="height:100vh; overflow:hidden;">
+    <!-- navbar -->
     <nav class="rounded position-absolute bottom-0 start-50 translate-middle-x mb-5"
          style="z-index: 500; width:100%; max-width: 40rem;">
         <div class="container-fluid">
@@ -86,7 +115,7 @@
                             </div>
                         </div>
                         <div class="g-2-text d-flex justify-content-center">
-                            <div class="d-flex flex-column justify-content-center text-center"
+                            <div class="d-flex m-1 px-4 flex-column justify-content-center border-start"
                                  style="width: 40rem; max-width:90%;">
                                 <span class="text-md">
                                     @Loc["AboutMeParagraph"]
@@ -105,11 +134,18 @@
                             <div class="row">
                                 @{
                                     foreach(IndexModel.WorkItem workItem in Model.workItems){
-                                        <div class="col d-flex justify-content-center">
-                                            <div class="work-item rounded glass-theme glass-fill">
-                                                <h1>@Loc[workItem.header]</h1>
-                                                <span>@Loc[workItem.teaser]</span>
-                                                <span>@Loc[workItem.fulltext]</span>
+                                        <div class="col d-flex flex-grow-1 justify-content-center">
+                                            <div class="work-item p-4 rounded glass-theme glass-fill">
+                                                @if(workItem.image != string.Empty){
+                                                    <img src="~/images/@workItem.image" class="img-fluid mx-auto d-block mb-2" style="height: 12rem;" />
+                                                }
+                                                <h4>@Loc[workItem.header]</h4>
+                                                <h6 class="color-highlight">@Loc[workItem.subtitle]</h6>
+                                                <hr />
+                                                <p>@Loc[workItem.teaser]</p>
+
+                                                <button onclick="openOverlay('@workItem.view', { header: '@workItem.header'})" class="btn glass-theme glass-fill">learn more</button>
+
                                             </div>
                                         </div>
                                     }
@@ -135,8 +171,43 @@
                 - writing and worldbuilding
                 Music
                 - link to music                *@
-                <div class="d-flex flex-row flex-grow-1 dither h-25">
-                    <section id="section-contact" class="index-grid p-0 m-0 w-100 h-100">
+                <div class="d-flex flex-row flex-grow-1 bright-g-fill" style="min-height: 100%;">
+                    <section id="section-contact" class="grid-responsive p-0 m-0">
+                        <div class="g-4-decoration d-flex justify-content-center align-items-center png-overlay-secondary glass-theme glass-fill rounded">
+                            <img src="~/images/plAnt.png" class="img-fluid" style="height:100%;" />
+                        </div>
+                        <div class="container g-4-contact-info glass-theme glass-fill">
+                            <div class="row">
+                                <div class="col  d-flex justify-content-center">
+                                    <!--email img-->
+                                    <div class="png-overlay-primary ms-2">
+                                        <img src="~/images/letter.png" class="img-fluid contact-img" style="height:100%;" />
+                                    </div>
+                                </div>
+                                <div class="col d-flex justify-content-center">
+                                    <!--email text-->
+                                    <div class="d-flex ms-5 pt-2 pb-2 align-items-center justify-content-end">
+                                        <span class="align-middle">hoejsgaard.tobias@gmail.com</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col d-flex justify-content-center">
+                                    <!--phone img-->
+                                    <div class="png-overlay-primary ms-2">
+                                        <img src="~/images/phone.png" class="img-fluid contact-img" style="height:100%;" />
+                                    </div>
+                                </div>
+                                <div class="col d-flex justify-content-center">
+                                    <!--phone text-->
+                                    <div class="d-flex ms-5 pt-2 pb-2 align-items-center justify-content-end">
+                                        <span class="align-middle">+45 29 26 84 13</span>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            
+                        </div>
 
                     </section>
                 </div>

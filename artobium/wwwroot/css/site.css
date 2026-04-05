@@ -3,6 +3,9 @@
   --secondary-color: #365144;
   --secondary-g-color: #305142ea;
   --secondary-g-color-2: #364a51;
+  --bright-color: #6878727e;
+  --bright-g-color: #6b685edc;
+  --bright-g-color-2: #8d7d5ee1;
   --highlight-color: #53bc73;
   --subtle-color: #222421;
   --background-color: #222421;
@@ -11,9 +14,9 @@
   --text-color: #f2f2f2dc;
   --shadow-color: #1b1b1b60;
   --semi-transparent-color: #2224217d;
-  --glass-color: #12141343;
+  --glass-color: #12141389;
   --glass-color-2: #111b1ba5;
-  --glass-border-color: #365144;
+  --glass-border-color: #484b49;
   --glass-border-color-2: #263b2b8f;
   --glass-glow: 0 0 0.7rem 0.1rem var(--highlight-color), 0 0 1.2rem 0.4rem transparent;
   --text-shadow: 1px 1px 4px var(--shadow-color);
@@ -214,6 +217,10 @@ p {
   background-image: linear-gradient(120deg, var(--secondary-color), var(--secondary-g-color), var(--secondary-g-color-2));
 }
 
+.bright-g-fill {
+  background-image: linear-gradient(120deg, var(--bright-color), var(--bright-g-color), var(--bright-g-color-2));
+}
+
 .background-fill {
   background-color: var(--background-color-2);
 }
@@ -228,6 +235,28 @@ p {
 
 .linear-gradient-fill-t-b {
   background-image: linear-gradient(to bottom, var(--background-color-2), transparent);
+}
+
+#overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+#overlay.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.overlay-1 {
+  width: 75%;
+  height: 100%;
+}
+
+@media (max-width: 768px){
+  .overlay-1{
+    width: 95%;
+  }
 }
 
 .text-theme {
@@ -518,7 +547,7 @@ a.glass-theme:hover, button.glass-theme:hover {
 }
 
 .g-3-workitems {
-  grid-column: 2 / 12;
+  grid-column: 3 / 11;
   grid-row: 2 / 12;
 }
 
@@ -529,8 +558,38 @@ a.glass-theme:hover, button.glass-theme:hover {
   }
 }
 
+.g-4-decoration {
+  grid-column: 5 / 9;
+  grid-row: 2 / 6;
+}
+
+.g-4-contact-info {
+  grid-column: 5 / 9;
+  grid-row: 8 / 12;
+}
+
+@media (max-width: 768px){
+  .g-4-decoration {
+    grid-column: 2 / 12;
+    grid-row: 2 / 10;
+  }
+
+  .g-4-contact-info {
+    grid-column: 2 / 12;
+    grid-row: 11 / 14;
+  }
+}
+
 .work-item {
-  width: 26rem;
-  height: 30rem;
+  width: 28rem;
+  height: 32rem;
   margin: 3rem;
+}
+
+.work-item-btn {
+  align-self: flex-end;
+}
+
+.contact-img {
+  max-height: 3.5rem;
 }

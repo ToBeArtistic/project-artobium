@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("artobium")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee98b87814c1c42f577d78b8b8737618b9c8bfcb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1a804fbbdb73443144b392d69fa6bcd05251f250")]
 [assembly: System.Reflection.AssemblyProductAttribute("artobium")]
 [assembly: System.Reflection.AssemblyTitleAttribute("artobium")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

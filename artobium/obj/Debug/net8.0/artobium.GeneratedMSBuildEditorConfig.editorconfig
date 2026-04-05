@@ -62,6 +62,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projects/Docker/project-artobium/artobium/Pages/_WorkItemPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1dvcmtJdGVtUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projects/Docker/project-artobium/artobium/Pages/_WorkItemPartialAntinomia.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1dvcmtJdGVtUGFydGlhbEFudGlub21pYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projects/Docker/project-artobium/artobium/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ft2z24qq9a
