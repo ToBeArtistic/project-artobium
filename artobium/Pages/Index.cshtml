@@ -95,6 +95,9 @@
                                 </span>
                             </div>
                         </div>
+                        <div class="g-1-logo-img png-overlay-highlight d-flex justify-content-center">
+                            <img src="~/images/logo.png" class="img-fluid align-bottom m-5" style="max-height: 12rem;"/>
+                        </div>
 
                     </section>
                 </div>
@@ -124,10 +127,6 @@
                         </div>
                     </section>
                 </div>
-
-                @*About me
-                - Creating new experiences and integrating ideas
-                - Gathering knowledge to become an excellent generalist*@
                 <div class="d-flex flex-row flex-grow-1 secondary-g-fill">
                     <section id="section-work" class="grid-responsive p-0 m-0">
                         <div class="container-fluid g-3-workitems responsive-grid">
@@ -137,14 +136,14 @@
                                         <div class="col d-flex flex-grow-1 justify-content-center">
                                             <div class="work-item p-4 rounded glass-theme glass-fill">
                                                 @if(workItem.image != string.Empty){
-                                                    <img src="~/images/@workItem.image" class="img-fluid mx-auto d-block mb-2" style="height: 12rem;" />
+                                                    <img src="~/images/@workItem.image" class="img-fluid mx-auto d-block mb-2" style="max-height: 10rem;" />
                                                 }
                                                 <h4>@Loc[workItem.header]</h4>
                                                 <h6 class="color-highlight">@Loc[workItem.subtitle]</h6>
                                                 <hr />
                                                 <p>@Loc[workItem.teaser]</p>
 
-                                                <button onclick="openOverlay('@workItem.view', { header: '@workItem.header'})" class="btn glass-theme glass-fill">learn more</button>
+                                                <button onclick="openOverlay('WorkItemPartial', { header: '@workItem.header'})" class="btn glass-theme glass-fill">learn more</button>
 
                                             </div>
                                         </div>
@@ -154,85 +153,28 @@
                         </div>
                     </section>
                 </div>
-                @*
-                Dev experience
-                - General words about me as dev
-                - Table view of places of work + education
-                - Project antinomia
-                <div class="d-flex flex-row flex-grow-1 background-fill h-100">
-                    <section class="ten-by-ten-grid p-0 m-0 w-100 h-100">
-                    </section>
-
-                </div>
-                Art, design & more
-                - pencil and paper
-                - digital design
-                Storytelling
-                - writing and worldbuilding
-                Music
-                - link to music                *@
-                <div class="d-flex flex-row flex-grow-1 bright-g-fill" style="min-height: 100%;">
+                <div class="d-flex flex-row flex-grow-1 bright-g-fill h-50">
                     <section id="section-contact" class="grid-responsive p-0 m-0">
-                        <div class="g-4-decoration d-flex justify-content-center align-items-center png-overlay-secondary glass-theme glass-fill rounded">
+                        @*
+                        <div class="g-4-decoration d-flex justify-content-center align-items-center png-overlay-highlight">
                             <img src="~/images/plAnt.png" class="img-fluid" style="height:100%;" />
                         </div>
-                        <div class="container g-4-contact-info glass-theme glass-fill">
-                            <div class="row">
-                                <div class="col  d-flex justify-content-center">
-                                    <!--email img-->
-                                    <div class="png-overlay-primary ms-2">
-                                        <img src="~/images/letter.png" class="img-fluid contact-img" style="height:100%;" />
-                                    </div>
-                                </div>
-                                <div class="col d-flex justify-content-center">
-                                    <!--email text-->
-                                    <div class="d-flex ms-5 pt-2 pb-2 align-items-center justify-content-end">
-                                        <span class="align-middle">hoejsgaard.tobias@gmail.com</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col d-flex justify-content-center">
-                                    <!--phone img-->
-                                    <div class="png-overlay-primary ms-2">
-                                        <img src="~/images/phone.png" class="img-fluid contact-img" style="height:100%;" />
-                                    </div>
-                                </div>
-                                <div class="col d-flex justify-content-center">
-                                    <!--phone text-->
-                                    <div class="d-flex ms-5 pt-2 pb-2 align-items-center justify-content-end">
-                                        <span class="align-middle">+45 29 26 84 13</span>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            
+                        *@
+                        <div class="g-4-email d-flex py-2 align-items-center justify-content-center">
+                            <span class="align-middle">hoejsgaard.tobias@gmail.com</span>
                         </div>
-
+                        <div class="g-4-email-img png-overlay-primary d-flex align-items-center justify-content-center">
+                            <img src="~/images/letter.png" class="img-fluid contact-img align-middle" style="height:100%;" />
+                        </div>
+                        <div class="g-4-phone d-flex py-2 align-items-center justify-content-center">
+                            <span class="align-middle">+45 29 26 84 13</span>
+                        </div>
+                        <div class="g-4-phone-img png-overlay-primary d-flex align-items-center justify-content-center">
+                            <img src="~/images/phone.png" class="img-fluid contact-img align-middle" style="height:100%;" />
+                        </div>                                
                     </section>
                 </div>
             </div>
-
-            @*
-                <!--email img-->
-                <div class="png-overlay-primary ms-2" style="grid-column: 9 / 10; grid-row: 10/11; z-index:2;">
-                    <img src="~/images/letter.png" class="img-fluid" style="height:100%;" />
-                </div>
-                <!--email text-->
-                <div class="d-flex ms-5 pt-2 pb-2 align-items-center justify-content-end"
-                     style="grid-column: 6 / 9; grid-row: 10/11; z-index:2;">
-                    <span class="align-middle">hoejsgaard.tobias@gmail.com</span>
-                </div>
-                <!--phone img-->
-                <div class="png-overlay-primary ms-2" style="grid-column: 9 / 10; grid-row: 11/12; z-index:2;">
-                    <img src="~/images/phone.png" class="img-fluid" style="height:100%;" />
-                </div>
-                <!--phone text-->
-                <div class="d-flex ms-5 pt-2 pb-2 align-items-center justify-content-end"
-                     style="grid-column: 6 / 9; grid-row: 11/12; z-index:2;">
-                    <span class="align-middle">+45 29 26 84 13</span>
-                </div>
-                *@
         </section>
     </div>
 </div>

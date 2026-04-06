@@ -23,31 +23,34 @@ public class IndexModel : PageModel
             {
               new WorkItem
               {
-                view = "WorkItemPartialAntinomia",
+                view = "_WorkItemPartialAntinomia",
                 image = "antinomia-logo.png",
                 header = "Work-Antinomia-Header",
                 subtitle = "Work-Antinomia-Subtitle",
                 teaser = "Work-Antinomia-Teaser",
                 fulltext = "Work-Antinomia-Fulltext"
               },
-                            new WorkItem
+              new WorkItem
               {
+                view = "_WorkItemPartialEcoOnline",
                 image = "ecoonline-logo.webp",
                 header = "Work-EcoOnline-Header",
                 subtitle = "Work-EcoOnline-Subtitle",
                 teaser = "Work-EcoOnline-Teaser",
                 fulltext = "Work-EcoOnline-Fulltext"
               },
-                                          new WorkItem
+              new WorkItem
               {
+                view = "_WorkItemPartialNetcompany",
                 image = "netcompany-logo.png",
                 header = "Work-Netcompany-Header",
                 subtitle = "Work-Netcompany-Subtitle",
                 teaser = "Work-Netcompany-Teaser",
                 fulltext = "Work-Netcompany-Fulltext"
               },
-                                          new WorkItem
+              new WorkItem
               {
+                view = "_WorkItemPartialDTU",
                 image = "DTU-logo.png",
                 header = "Work-DTU-Header",
                 subtitle = "Work-DTU-Subtitle",
@@ -66,19 +69,11 @@ public class IndexModel : PageModel
     {
       WorkItem workItem = workItems.FirstOrDefault(x => x.header == header) ?? new WorkItem();
 
-      return Partial("_WorkItemPartial", workItem);
+      return Partial(workItem.view, workItem);
     }
-
-    public IActionResult OnGetWorkItemPartialAntinomia(string header)
-    {
-        WorkItem workItem = workItems.FirstOrDefault(x => x.header == header) ?? new WorkItem();
-
-        return Partial("_WorkItemPartialAntinomia", workItem);
-    }
-
     public class WorkItem
     {
-        public string view {get;set;} = "WorkItemPartial";
+        public string view {get;set;} = "_WorkItemPartial";
         public string image {get;set;} = string.Empty;
         public string header { get; set; } = string.Empty;
 

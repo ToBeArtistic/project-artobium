@@ -3,9 +3,9 @@
   --secondary-color: #365144;
   --secondary-g-color: #305142ea;
   --secondary-g-color-2: #364a51;
-  --bright-color: #6878727e;
-  --bright-g-color: #6b685edc;
-  --bright-g-color-2: #8d7d5ee1;
+  --bright-color: #1c26317e;
+  --bright-g-color: #23211bdc;
+  --bright-g-color-2: #1b0805e1;
   --highlight-color: #53bc73;
   --subtle-color: #222421;
   --background-color: #222421;
@@ -512,6 +512,11 @@ a.glass-theme:hover, button.glass-theme:hover {
   grid-row: 7 / 11;
 }
 
+.g-1-logo-img {
+  grid-column: 10 / 12;
+  grid-row: 3 / 7;
+}
+
 @media (max-width: 768px){
   .g-1-name {
     grid-column: 2 / 12;
@@ -521,6 +526,11 @@ a.glass-theme:hover, button.glass-theme:hover {
   .g-1-intro-text {
     grid-column: 2 / 12;
     grid-row: 6 / 9;
+  }
+
+  .g-1-logo-img {
+    grid-column: 2 / 12;
+    grid-row: 1 / 4;
   }
 }
 
@@ -559,8 +569,8 @@ a.glass-theme:hover, button.glass-theme:hover {
 }
 
 .g-4-decoration {
-  grid-column: 5 / 9;
-  grid-row: 2 / 6;
+  grid-column: 1 / 4;
+  grid-row: 2 / 12;
 }
 
 .g-4-contact-info {
@@ -568,9 +578,30 @@ a.glass-theme:hover, button.glass-theme:hover {
   grid-row: 8 / 12;
 }
 
+.g-4-email {
+  grid-column: 5 / 9;
+  grid-row: 4 / 5;
+}
+
+.g-4-email-img {
+  grid-column: 5 / 9;
+  grid-row: 3 / 4;
+}
+
+.g-4-phone {
+  grid-column: 5 / 9;
+  grid-row: 6 / 7;
+}
+
+.g-4-phone-img {
+  grid-column: 5 / 9;
+  grid-row: 5 / 6;
+}
+
+
 @media (max-width: 768px){
   .g-4-decoration {
-    grid-column: 2 / 12;
+    grid-column: 2 / 6;
     grid-row: 2 / 10;
   }
 
@@ -591,5 +622,5 @@ a.glass-theme:hover, button.glass-theme:hover {
 }
 
 .contact-img {
-  max-height: 3.5rem;
+  max-height: 5rem;
 }
