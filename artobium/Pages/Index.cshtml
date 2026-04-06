@@ -1,81 +1,181 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Tobias - Developer // Artist";
 }
+@inject IndexModel.Localizer Loc
 
-<!--name and subtitle box-->
-<div class="m-4" style="grid-column: 5 / 11; grid-row: 2 / 3">
-    <h1 class="text-uppercase pl-3">Tobias A. Højsgaard</h1>
-    <hr class="color-highlight" />
-    <h4 class="pl-3">software engineer // artist</h4>
-</div>
-<div class="png-overlay-highlight ms-5" style="grid-column: 8 / span 2; grid-row: 2 / 3;z-index:1;">
-    <img src="~/images/logo.png" class="img-fluid" />
-</div>
-
-<a asp-area="" asp-page="/Development" class="font-code glass-theme glass-fill rounded border-5 m-5 mt-3 png-overlay-secondary"
-        style="grid-column: 2 / span 2; grid-row: 2 / span 5;">
-    <img src="~/images/dev-tree.png" class="img-fluid img-fill-gridbox" style="position:absolute; z-index:-1;"/>
-    <div class="position-absolute top-0 start-0 mt-1 p-1 px-4"><h5>: software development</h5></div>
-</a>
-<a asp-area="" asp-page="/ArtAndDesign" class="font-serif glass-theme glass-fill rounded border-5 m-5 png-overlay-secondary"
-        style="grid-column: 3 / span 2; grid-row: 5 / span 5;">
-    <img src="~/images/design-thing.png" class="img-fluid img-fill-gridbox" style="position: absolute; z-index:-1;"/>
-        <div class="position-absolute end-0 bottom-0 mb-1 p-1 px-4"><h5>~ art & design ~</h5></div>
-</a>
-<a asp-area="" asp-page="/More" class="font-bold d-flex justify-content-center align-items-center glass-theme glass-fill rounded-circle border-5 mt-4 mb-3 mx-auto png-overlay-secondary"
-        style="grid-column: 2 / span 2; grid-row: 8 / span 4;">
-        <img src="~/images/plAnt.png" class="" style="object-fit: contain; width:auto; height:100%; display:block; pointer-events:none; z-index:-1;" />
-        <div class="position-absolute p-1 px-3 "><h5>and more!</h5></div>
-</a>
-<a asp-area="" asp-page="/Info" class="font-fun d-flex justify-content-center align-items-center glass-theme glass-fill rounded border-5 mb-2 ms-0 mt-5 me-5 png-overlay-secondary"
-        style="grid-column: 4 / span 1; grid-row: 2 / span 3;">
-        <img src="~/images/portrait.png" class="img-fluid img-fill-gridbox" />
-        <div class="position-absolute start-0 bottom-0 mb-1 ms-1 p-1 px-3"><h5>about me</h5></div>
-</a>
-
-<!--about me - textbox-->
-<div class="p-5" style="grid-column: 5 / 10; grid-row: 4 / 8;">
-    <span class="text-large text-shadow">Hello, I am a <span class="color-highlight">full-stack developer</span> with a <span
-        class="color-highlight">creative</span> spark. I seek to bring novel experiences to life.</span>
+<div id="overlay" class="" style="display:none; position:fixed; inset:0; z-index:1000;">
+    <div id="overlay-content" class="overlay-1 position-absolute top-50 start-50 translate-middle">
+        <!-- partial loads here -->
     </div>
-    <!--little hatch-->
-    <!--
-    <div class="hatch-subtle" style="grid-column: 10 / span 2; grid-row: 4 / 8;">
-    </div>-->
+</div>
 
+<script>
+    async function openOverlay(handler, data = {}) {
+        const params = new URLSearchParams({ handler, ...data });
+        const response = await fetch(`?${params}`);
+        document.getElementById('overlay-content').innerHTML = await response.text();
+        const overlay = document.getElementById('overlay');
+        overlay.style.display = 'block';
+        requestAnimationFrame(() => overlay.classList.add('visible'));
+    }
 
+    function closeOverlay() {
+        const overlay = document.getElementById('overlay');
+        overlay.classList.remove('visible');
+        setTimeout(() => {
+            overlay.style.display = 'none';
+            document.getElementById('overlay-content').innerHTML = '';
+        }, 300); // match transition duration
+    }
 
-@*
-@if (!Model.Products.Any())
-{
-    <p>No products found.</p>
-}
-else
-{
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Stock</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var p in Model.Products)
-            {
-                <tr>
-                    <td>@p.Name</td>
-                    <td>@p.Description</td>
-                    <td>@p.Price.ToString("C")</td>
-                    <td>@p.Stock</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-*@
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeOverlay();
+    });
+</script>
 
+<div class="d-flex flex-column" style="height:100vh; overflow:hidden;">
+    <!-- navbar -->
+    <nav class="rounded position-absolute bottom-0 start-50 translate-middle-x mb-5"
+         style="z-index: 500; width:100%; max-width: 40rem;">
+        <div class="container-fluid">
+            <div class="row d-flex flex-grow-1">
+                <div class="col d-flex justify-content-center">
+                    <a href="#section-home">
+                        <button class="btn rounded-circle glass-theme glass-fill"
+                                style="height:6rem; width:6rem;">home</button>
+                    </a>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <a href="#section-about">
+                        <button class="btn rounded-circle glass-theme glass-fill"
+                                style="height:6rem; width:6rem;">about</button>
+                    </a>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <a href="#section-work">
+                        <button class="btn rounded-circle glass-theme glass-fill"
+                                style="height:6rem; width:6rem;">work</button>
+                    </a>
+                </div>
+                <div class="col d-flex justify-content-center">
+                    <a href="#section-contact">
+                        <button class="btn rounded-circle glass-theme glass-fill"
+                                style="height:6rem; width:6rem;">contact</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="d-flex flex-shrink-1 flex-grow-1 flex-column p-0" style="min-height: 0; overflow-y: auto;">
+        <section class="index-grid p-0 m-0">
+            <div class="d-flex justify-content-end png-overlay-secondary position-absolute start-0 top-0"
+                 style="width: 200vh; height: 100vh; object-fit: contain; opacity: 0.2; z-index: -100;">
+                <img src="~/images/bubbles-back.png" class="img-fluid" />
+            </div>
+            <div class="d-flex justify-content-end png-overlay-highlight position-absolute start-0 top-0"
+                 style="width: 200vh; height: 100vh; object-fit: contain; opacity: 0.2; z-index: -100;">
+                <img src="~/images/bubbles-front.png" class="img-fluid" />
+            </div>
+            <div class="overflow-scroll" style="grid-column: 1 / span 10; grid-row: 1 / span 12;">
+                
+                <div class="d-flex flex-row flex-column flex-grow-1 dither" style="min-height: 100%;">
+                    <section id="section-home" class="grid-responsive p-0 m-0">
+                        <div class="g-1-name">
+                            <h1>@Loc["HeroTitle"]</h1>
+                            <hr />
+                            <p>@Loc["HeroSubtitle"]</p>
+                        </div>
+                        <div class="g-1-intro-text">
+                            <div class="p-5 d-flex flex-column flex-row">
+                                <span class="text-large">
+                                    @Loc["HeroParagraph"]
+                                </span>
+                            </div>
+                        </div>
+                        <div class="g-1-logo-img png-overlay-highlight d-flex justify-content-center">
+                            <img src="~/images/logo.png" class="img-fluid align-bottom m-5" style="max-height: 12rem;"/>
+                        </div>
+
+                    </section>
+                </div>
+
+                <div class="d-flex flex-row flex-column flex-grow-1 background-fill" style="min-height: 100%;">
+                    <section id="section-about" class="grid-responsive p-0 m-0">
+                        <div class="g-2-portrait d-flex justify-content-center align-items-center">
+                            <div class="position-relative m-5" style="width: 18rem; height:18rem;">
+                                <div class="position-absolute secondary-fill top-0 start-0"
+                                     style="height: 2rem; width: 2rem;"></div>
+                                <div class="rounded-circle w-100 h-100 position-relative" style="overflow: hidden;">
+                                    <img src="~/images/tobias-grayscale.png" class="position-absolute"
+                                         style="width: auto; height:100%; left: -1rem;" />
+                                </div>
+                                <div class="position-absolute secondary-fill end-0 bottom-0"
+                                     style="height: 2rem; width: 2rem;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="g-2-text d-flex justify-content-center">
+                            <div class="d-flex m-1 px-4 flex-column justify-content-center border-start"
+                                 style="width: 40rem; max-width:90%;">
+                                <span class="text-md">
+                                    @Loc["AboutMeParagraph"]
+                                </span>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="d-flex flex-row flex-grow-1 secondary-g-fill">
+                    <section id="section-work" class="grid-responsive p-0 m-0">
+                        <div class="container-fluid g-3-workitems responsive-grid">
+                            <div class="row">
+                                @{
+                                    foreach(IndexModel.WorkItem workItem in Model.workItems){
+                                        <div class="col d-flex flex-grow-1 justify-content-center">
+                                            <div class="work-item p-4 rounded glass-theme glass-fill">
+                                                @if(workItem.image != string.Empty){
+                                                    <img src="~/images/@workItem.image" class="img-fluid mx-auto d-block mb-2" style="max-height: 10rem;" />
+                                                }
+                                                <h4>@Loc[workItem.header]</h4>
+                                                <h6 class="color-highlight">@Loc[workItem.subtitle]</h6>
+                                                <hr />
+                                                <p>@Loc[workItem.teaser]</p>
+
+                                                <button onclick="openOverlay('WorkItemPartial', { header: '@workItem.header'})" class="btn glass-theme glass-fill">learn more</button>
+
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="d-flex flex-row flex-grow-1 bright-g-fill h-50">
+                    <section id="section-contact" class="grid-responsive p-0 m-0">
+                        @*
+                        <div class="g-4-decoration d-flex justify-content-center align-items-center png-overlay-highlight">
+                            <img src="~/images/plAnt.png" class="img-fluid" style="height:100%;" />
+                        </div>
+                        *@
+                        <div class="g-4-email d-flex py-2 align-items-center justify-content-center">
+                            <span class="align-middle">hoejsgaard.tobias@gmail.com</span>
+                        </div>
+                        <div class="g-4-email-img png-overlay-primary d-flex align-items-center justify-content-center">
+                            <img src="~/images/letter.png" class="img-fluid contact-img align-middle" style="height:100%;" />
+                        </div>
+                        <div class="g-4-phone d-flex py-2 align-items-center justify-content-center">
+                            <span class="align-middle">+45 29 26 84 13</span>
+                        </div>
+                        <div class="g-4-phone-img png-overlay-primary d-flex align-items-center justify-content-center">
+                            <img src="~/images/phone.png" class="img-fluid contact-img align-middle" style="height:100%;" />
+                        </div>                                
+                    </section>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
 

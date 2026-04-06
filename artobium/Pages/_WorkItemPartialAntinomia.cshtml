@@ -1,0 +1,45 @@
+@model IndexModel.WorkItem
+@inject IndexModel.Localizer Loc
+
+<div class="background-fill p-4 rounded" style="min-height: 100vh;">
+	<button onclick="closeOverlay()" class="btn glass-theme glass-fill"
+			style="position:absolute; top:1rem; right:1rem;">✕</button>
+	<h2>@Loc[Model.header]</h2>
+	<p>@Loc[Model.subtitle]</p>
+	<p>@Loc["Ongoing"]</p>
+	<hr />
+	<span>@Loc[Model.fulltext]</span>
+	<div class="container">
+		<div class="row">
+			<div class="col d-flex justify-content-center">
+				<div class="work-item">
+					<h4 class="w-100">@Loc["Antinomia-Star-Header"]</h4>
+					<p>@Loc["Antinomia-Star-Description"]</p>
+					<hr />
+					<a href="https://tobeartistic.notion.site/star-chase">
+						<button class="btn btn-outline">
+							<img src="~/images/star.png" class="image-fluid mx-auto d-block" style="max-height: 20rem;"/>
+						</button>
+					</a>
+				</div>
+			</div>
+			<div class="col d-flex justify-content-center">
+				<div class="work-item">
+					<h4>@Loc["Antinomia-Music-Header"]</h4>
+					<p>@Loc["Antinomia-Music-Description"]</p>
+					<hr />
+					<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+							src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2297025269&color=%23365144&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+					<div
+						style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+						<a href="https://soundcloud.com/tobias-hoejsgaard" title="Tobias Hoejsgaard" target="_blank"
+						   style="color: #cccccc; text-decoration: none;">Tobias Hoejsgaard</a> · <a
+						href="https://soundcloud.com/tobias-hoejsgaard/wound-cleansing-instrumental"
+						title="Wound Cleansing - Instrumental" target="_blank"
+						style="color: #cccccc; text-decoration: none;">Wound Cleansing - Instrumental</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,55 +1,108 @@
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Npgsql;
+using Microsoft.AspNetCore.Mvc.Localization;
+using Microsoft.Extensions.Localization;
+using System.Text.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace artobium.Pages;
+
 
 public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
-    private readonly IConfiguration _config;
 
-    public List<Product> Products {get;private set;} = new();
-    public IndexModel(ILogger<IndexModel> logger, IConfiguration config)
+    public readonly List<WorkItem> workItems;
+
+    public List<Product> Products { get; private set; } = new();
+    public IndexModel(ILogger<IndexModel> logger)
     {
         _logger = logger;
-        _config = config;
+        workItems = new List<WorkItem>()
+            {
+              new WorkItem
+              {
+                view = "_WorkItemPartialAntinomia",
+                image = "antinomia-logo.png",
+                header = "Work-Antinomia-Header",
+                subtitle = "Work-Antinomia-Subtitle",
+                teaser = "Work-Antinomia-Teaser",
+                fulltext = "Work-Antinomia-Fulltext"
+              },
+              new WorkItem
+              {
+                view = "_WorkItemPartialEcoOnline",
+                image = "ecoonline-logo.webp",
+                header = "Work-EcoOnline-Header",
+                subtitle = "Work-EcoOnline-Subtitle",
+                teaser = "Work-EcoOnline-Teaser",
+                fulltext = "Work-EcoOnline-Fulltext"
+              },
+              new WorkItem
+              {
+                view = "_WorkItemPartialNetcompany",
+                image = "netcompany-logo.png",
+                header = "Work-Netcompany-Header",
+                subtitle = "Work-Netcompany-Subtitle",
+                teaser = "Work-Netcompany-Teaser",
+                fulltext = "Work-Netcompany-Fulltext"
+              },
+              new WorkItem
+              {
+                view = "_WorkItemPartialDTU",
+                image = "DTU-logo.png",
+                header = "Work-DTU-Header",
+                subtitle = "Work-DTU-Subtitle",
+                teaser = "Work-DTU-Teaser",
+                fulltext = "Work-DTU-Fulltext"
+              },
+            };
     }
 
-    public async Task OnGetAsync()
+    public async Task OnGetAsync(string lang = "en")
     {
-        var connString = _config.GetConnectionString("DefaultConnection");
-        _logger.LogDebug(connString);
-        await using var conn = new NpgsqlConnection(connString);
-        await conn.OpenAsync();
 
-        await using var cmd = new NpgsqlCommand(
-            "SELECT id, name, description, price, stock FROM products ORDER BY name", conn);
+    }
 
-        await using var reader = await cmd.ExecuteReaderAsync();
+    public IActionResult OnGetWorkItemPartial(string header)
+    {
+      WorkItem workItem = workItems.FirstOrDefault(x => x.header == header) ?? new WorkItem();
 
-        while (await reader.ReadAsync())
+      return Partial(workItem.view, workItem);
+    }
+    public class WorkItem
+    {
+        public string view {get;set;} = "_WorkItemPartial";
+        public string image {get;set;} = string.Empty;
+        public string header { get; set; } = string.Empty;
+
+        public string subtitle { get; set; } = string.Empty;
+        public string teaser { get; set; } = string.Empty;
+
+        public string fulltext { get; set; } = string.Empty;
+    }
+
+    public class Localizer
+    {
+        private readonly Dictionary<string, string> _translations;
+
+        public Localizer(IHttpContextAccessor httpContextAccessor, IWebHostEnvironment env)
         {
-            _logger.LogDebug(reader.ToString());
-            Products.Add(new Product
-            {
-                Id          = reader.GetGuid(0),
-                Name        = reader.GetString(1),
-                Description = reader.IsDBNull(2) ? "" : reader.GetString(2),
-                Price       = reader.GetDecimal(3),
-                Stock       = reader.GetInt32(4),
-            });
+            List<string> supportedCultures = ["en"];
+            var lang = httpContextAccessor.HttpContext?.Request.Query["lang"].ToString() ?? "en";
+            lang = supportedCultures.Contains(lang) ? lang : "en";
+            var path = Path.Combine(
+                env.WebRootPath,
+                "content",
+                $"translations.{lang}.json"
+            );
+            var json = System.IO.File.ReadAllText(path);
+            var jsonTranslations = JsonSerializer.Deserialize<Dictionary<string, string>>(json);
+            _translations = jsonTranslations != null ? jsonTranslations : new Dictionary<string, string>();
         }
 
-        _logger.LogDebug(Products.Count.ToString());
+        public HtmlString this[string key] =>
+            new HtmlString(_translations.TryGetValue(key, out var value) ? value : key);
     }
-}
-
-public class Product
-{
-    public Guid   Id          { get; set; }
-    public string Name        { get; set; } = "";
-    public string Description { get; set; } = "";
-    public decimal Price      { get; set; }
-    public int    Stock       { get; set; }
 }

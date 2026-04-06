@@ -1,0 +1,11 @@
+@model IndexModel.WorkItem
+@inject IndexModel.Localizer Loc
+
+<div class="background-fill p-4 rounded" style="min-height: 100vh;">
+    <button onclick="closeOverlay()" class="btn glass-theme glass-fill" style="position:absolute; top:1rem; right:1rem;">✕</button>
+    <h2>@Loc[Model.header]</h2>
+    <p>@Loc[Model.subtitle]</p>
+	<p>2019-2023</p>
+    <hr />
+    <span>@Loc[Model.fulltext]</span>
+</div>
