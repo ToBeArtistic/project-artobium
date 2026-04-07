@@ -10,7 +10,7 @@ services:
       context: .
       target: final
     ports:
-      - 8080:8080
+      - 3000:8080
 #DB
     depends_on:
       db:
