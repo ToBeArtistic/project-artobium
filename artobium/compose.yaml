@@ -22,8 +22,18 @@ services:
     restart: unless-stopped
     volumes:
       - ./proxy/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
     depends_on:
       - server
+  #Certificates
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    command: certonly --webroot -w /var/www/certbot --keep-until-expiring --email hoejsgaard.tobias@gmail.com -d artobium.net --agree-tos
   #DB
   db:
     image: postgres:18
