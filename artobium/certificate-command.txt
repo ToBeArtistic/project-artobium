@@ -1,0 +1,8 @@
+docker compose run --rm certbot-init certonly \
+  --webroot \
+  --webroot-path=/var/www/certbot \
+  --email hoejsgaard.tobias@gmail.com \
+  --agree-tos \
+  --no-eff-email \
+  -d artobium.net \
+  -v
