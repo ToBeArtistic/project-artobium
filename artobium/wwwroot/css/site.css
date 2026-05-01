@@ -534,6 +534,24 @@ a.glass-theme:hover, button.glass-theme:hover {
   }
 }
 
+@media (aspect-ratio < 1.7) and (min-width: 768px){
+  .g-1-name {
+    grid-column: 3 / 13;
+    grid-row: 3 / 6;
+  }
+
+  .g-1-intro-text {
+    grid-column: 3 / 12;
+    grid-row: 4 / 8;
+    padding-top: 1rem;
+  }
+
+  .g-1-logo-img {
+    grid-column: 10 / 12;
+    grid-row: 2 / 5;
+  }
+}
+
 .g-2-portrait {
   grid-column: 2 / 12;
   grid-row: 1 / 7;
