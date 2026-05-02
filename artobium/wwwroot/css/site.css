@@ -88,7 +88,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-large, .text-lg {font-size: 1.5rem;}
-.text-medium, .text-md {font-size: 1.25rem;}
+.text-medium, .text-md {font-size: 1.1rem;}
 .text-shadow{text-shadow: 0 0 3px var(--shadow-color);}
 
 .scroll-x {
@@ -534,7 +534,7 @@ a.glass-theme:hover, button.glass-theme:hover {
   }
 }
 
-@media (aspect-ratio < 1.7) and (min-width: 768px){
+@media (aspect-ratio < 2) and (min-width: 768px){
   .g-1-name {
     grid-column: 3 / 13;
     grid-row: 3 / 6;
@@ -553,13 +553,13 @@ a.glass-theme:hover, button.glass-theme:hover {
 }
 
 .g-2-portrait {
-  grid-column: 2 / 12;
-  grid-row: 1 / 7;
+  grid-column: 5 / 9;
+  grid-row: 1 / 4;
 }
 
 .g-2-text {
   grid-column: 2 / 12;
-  grid-row: 7 / 12;
+  grid-row: 4 / 6;
 }
 
 @media (max-width: 768px){
@@ -630,9 +630,9 @@ a.glass-theme:hover, button.glass-theme:hover {
 }
 
 .work-item {
-  width: 28rem;
-  height: 32rem;
-  margin: 3rem;
+  width: 20rem;
+  height: 29rem;
+  margin: 2.5rem;
 }
 
 .work-item-btn {
